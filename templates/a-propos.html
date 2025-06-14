@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title>À propos – MonConvertisseur</title>
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="./img/favicon.png" />
+    <link rel="icon"
+        type="image/svg+xml"
+        href="./img/favicon.svg" />
+    <link rel="shortcut icon"
+        href="./img/favicon.ico" />
+    <link rel="apple-touch-icon"
+        sizes="180x180"
+        href="./img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title"
+        content="MonConvertiseur" />
+    <link rel="manifest"
+        href="./img/site.webmanifest" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet"
+        href="./style.css" />
+
+    <!-- Animations & Icônes -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}?v=42" />
+
+    <!-- WOW.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => new WOW().init());
+    </script>
+</head>
+
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="{{ url_for('accueil') }}"
+                class="flex items-center space-x-3 group">
+                <img src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Logo"
+                    class="h-10 w-10 rounded-full" />
+                <span
+                    class="font-bold text-xl text-gray-800 group-hover:text-blue-600 transition">MonConvertisseur</span>
+            </a>
+            <div class="md:hidden">
+                <button id="menu-btn"
+                    class="focus:outline-none"
+                    aria-label="Ouvrir le menu">
+                    <svg class="h-6 w-6 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav id="menu"
+                class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="{{ url_for('accueil') }}"
+                    class="nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+                <a href="{{ url_for('a_propos') }}"
+                    class="nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+                <a href="{{ url_for('services') }}"
+                    class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a>
+                <a href="{{ url_for('contact') }}"
+                    class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+            </nav>
+        </div>
+        <div id="mobile-menu"
+            class="md:hidden hidden px-4 pb-4 space-y-2 text-sm font-medium">
+            <a href="{{ url_for('accueil') }}"
+                class="block nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+            <a href="{{ url_for('a_propos') }}"
+                class="block nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+            <a href="{{ url_for('services') }}"
+                class="block nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a>
+            <a href="{{ url_for('contact') }}"
+                class="block nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+        </div>
+    </header>
+
+
+    <!-- Titre principal -->
+    <section class="text-center mt-10">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 animate__animated animate__fadeInDown">
+            Convertisseur de Devises
+        </h1>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-600 mt-2 animate__animated animate__fadeInUp">
+            En temps réel, fiable et inclusif
+        </h2>
+        <p class="text-gray-600 mt-4">Comparez, convertissez, et voyagez l’esprit léger.</p>
+    </section>
+
+
+    <!-- Contenu principal -->
+    <main role="main"
+        class="bg-gray-100 py-16 px-4 sm:px-6">
+        <section id="apropos"
+            class="max-w-7xl mx-auto bg-white rounded-xl shadow-md p-8 space-y-16">
+
+            <!-- Bloc 1 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.2s">
+                    <h3 class="text-2xl font-semibold text-gray-700 mt-2">
+                        POUR LA <span class="text-blue-600">CONVERSION DE DEVISES INCLUSIVE</span>
+                    </h3>
+                    <p class="mt-6 text-lg text-gray-700 leading-relaxed">
+                        MonConvertisseur facilite les conversions monétaires courantes, notamment en Afrique où de
+                        nombreuses
+                        devises sont absentes des plateformes classiques. Pensé pour être pratique, rapide et fiable, il
+                        simplifie
+                        le quotidien des commerçants, développeurs, voyageurs et citoyens du monde.
+                    </p>
+                </div>
+                <div class="flex justify-center wow animate__animated animate__fadeInRight"
+                    data-wow-delay="0.4s">
+                    <img src="{{ url_for('static', filename='img/conversion_dev.jpg') }}"
+                        alt="Illustration conversion de devises"
+                        class="rounded-lg shadow-lg w-full max-w-md"
+                        loading="lazy" />
+                </div>
+            </div>
+
+            <hr class="border-t border-gray-300 my-8 wow animate__animated animate__fadeIn"
+                data-wow-delay="0.1s">
+
+            <!-- Bloc 2 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.4s">
+                    <img src="{{ url_for('static', filename='img/deversion_mon.jpg') }}"
+                        alt="Illustration services de conversion"
+                        class="rounded-lg shadow-lg w-full max-w-md"
+                        loading="lazy" />
+                </div>
+                <div class="space-y-6 wow animate__animated animate__fadeInRight"
+                    data-wow-delay="0.5s">
+                    <ul class="space-y-3 text-gray-800"
+                        aria-label="Fonctionnalités du convertisseur">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-2"></i> +30 devises prises en charge
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-2"></i> Taux fixes pour les monnaies
+                            africaines (XAF, XOF, NGN…)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-2"></i> Fallback intelligent via l'euro
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-2"></i> Interface fluide et responsive
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-600 mr-2"></i> Open source et en amélioration
+                            continue
+                        </li>
+                    </ul>
+
+                    <div class="grid grid-cols-3 gap-6 text-center pt-6">
+                        <div class="wow animate__animated animate__zoomIn"
+                            data-wow-delay="0.3s">
+                            <strong class="text-3xl font-bold text-blue-600"
+                                aria-label="1500 conversions">1500+</strong>
+                            <div class="text-sm text-gray-600">Conversions réalisées</div>
+                        </div>
+                        <div class="wow animate__animated animate__zoomIn"
+                            data-wow-delay="0.4s">
+                            <strong class="text-3xl font-bold text-blue-600"
+                                aria-label="25 devises africaines">25</strong>
+                            <div class="text-sm text-gray-600">Devises africaines intégrées</div>
+                        </div>
+                        <div class="wow animate__animated animate__zoomIn"
+                            data-wow-delay="0.5s">
+                            <strong class="text-3xl font-bold text-blue-600"
+                                aria-label="Accessibilité hors ligne partielle">100%</strong>
+                            <div class="text-sm text-gray-600">Accessible hors ligne (partiel)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appel à l’action -->
+            <section
+                class="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg py-10 px-6 text-center shadow-md wow animate__animated animate__fadeInUp"
+                data-wow-delay="0.6s">
+                <h2 class="text-3xl font-bold mb-4">Essayez MonConvertisseur dès maintenant</h2>
+                <p class="text-lg mb-6">Simple, rapide et pensé pour toutes vos devises – où que vous soyez.</p>
+                <a href="./index.html"
+                    role="button"
+                    aria-label="Accéder au convertisseur"
+                    class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition transform hover:-translate-y-1 hover:shadow-md">
+                    Convertir une devise
+                </a>
+            </section>
+
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white mt-auto shadow-sm py-6 text-center text-sm text-gray-600">
+        <p>&copy; 2025 MonConvertisseur. Tous droits réservés.</p>
+        <p class="mt-1">Par Yowan Mberi</p>
+    </footer>
+
+    <!-- Compteurs dynamiques -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.compteur').forEach(counter => {
+                const target = +counter.textContent.replace(/\D/g, '');
+                const speed = 40;
+                let count = 0;
+                const increment = Math.ceil(target / 50);
+
+                const run = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.textContent = count + (target >= 100 ? '+' : '');
+                        setTimeout(run, speed);
+                    } else {
+                        counter.textContent = target + (target >= 100 ? '+' : '');
+                    }
+                };
+                run();
+            });
+        });
+    </script>
+
+    <!-- Script principal -->
+    <script src="./script.js"></script>
+</body>
+
+
+</html>

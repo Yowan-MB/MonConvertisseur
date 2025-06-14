@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title>En construction – MonConvertisseur</title>
+
+    <!-- Icônes & favicon -->
+    <link rel="icon"
+        href="{{ url_for('static', filename='img/favicon-96x96.png') }}" />
+    <link rel="icon"
+        type="image/svg+xml"
+        href="{{ url_for('static', filename='img/favicon.svg') }}" />
+    <link rel="shortcut icon"
+        href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <link rel="apple-touch-icon"
+        sizes="180x180"
+        href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" />
+    <meta name="apple-mobile-web-app-title"
+        content="MonConvertisseur" />
+
+    <!-- Styles -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => new WOW().init());
+    </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="{{ url_for('accueil') }}"
+                class="flex items-center space-x-3 group">
+                <img src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Logo"
+                    class="h-10 w-10 rounded-full" />
+                <span class="font-bold text-xl text-gray-800 group-hover:text-blue-600 transition">
+                    MonConvertisseur
+                </span>
+            </a>
+            <div class="md:hidden">
+                <button id="menu-btn"
+                    class="focus:outline-none"
+                    aria-label="Ouvrir le menu">
+                    <svg class="h-6 w-6 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav id="menu"
+                class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="{{ url_for('accueil') }}"
+                    class="nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+                <a href="{{ url_for('a_propos') }}"
+                    class="nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+                <a href="{{ url_for('services') }}"
+                    class="nav-link {% if request.endpoint in ['services', 'en_construction'] %}active{% endif %}">Services</a>
+                <a href="{{ url_for('contact') }}"
+                    class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+            </nav>
+        </div>
+        <div id="mobile-menu"
+            class="md:hidden hidden px-4 pb-4 space-y-2 text-sm font-medium">
+            <a href="{{ url_for('accueil') }}"
+                class="block nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+            <a href="{{ url_for('a_propos') }}"
+                class="block nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+            <a href="{{ url_for('services') }}"
+                class="block nav-link {% if request.endpoint in ['services', 'en_construction'] %}active{% endif %}">Services</a>
+            <a href="{{ url_for('contact') }}"
+                class="block nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+        </div>
+    </header>
+
+    <!-- Message principal -->
+    <main class="flex-grow flex items-center justify-center px-4">
+        <section class="text-center max-w-xl py-20 wow animate__fadeInUp">
+            <i class="fas fa-tools text-blue-600 text-5xl mb-6 animate__animated animate__bounce"></i>
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Page en construction</h1>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                Cette fonctionnalité n’est pas encore disponible.<br />
+                Le comparateur et le calculateur seront bientôt accessibles pour simplifier vos transferts et
+                conversions.
+            </p>
+            <a href="{{ url_for('accueil') }}"
+                class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded font-medium hover:bg-blue-700 transition">
+                Retour à l’accueil
+            </a>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white shadow-sm py-6 text-center text-sm text-gray-600">
+        <p>&copy; 2025 MonConvertisseur. Tous droits réservés.</p>
+        <p class="mt-1">Par Yowan Mberi</p>
+    </footer>
+</body>
+
+</html>

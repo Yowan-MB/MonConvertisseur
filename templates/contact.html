@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title>Contact – MonConvertisseur</title>
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="../static/img/favicon.png" />
+    <link rel="icon"
+        type="image/svg+xml"
+        href="../static/img/favicon.svg" />
+    <link rel="shortcut icon"
+        href="../static/img/favicon.ico" />
+    <link rel="apple-touch-icon"
+        sizes="180x180"
+        href="../static/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title"
+        content="MonConvertisseur" />
+    <link rel="manifest"
+        href="../static/img/site.webmanifest" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet"
+        href="/static/style.css" />
+
+    <!-- Animations & Icônes -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- WOW.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        defer></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => new WOW().init());
+    </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="{{ url_for('accueil') }}"
+                class="flex items-center space-x-3 group">
+                <img src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Logo"
+                    class="h-10 w-10 rounded-full" />
+                <span class="font-bold text-xl text-gray-800 group-hover:text-blue-600 transition">
+                    MonConvertisseur
+                </span>
+            </a>
+            <div class="md:hidden">
+                <button id="menu-btn"
+                    class="focus:outline-none"
+                    aria-label="Ouvrir le menu">
+                    <svg class="h-6 w-6 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav id="menu"
+                class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="{{ url_for('accueil') }}"
+                    class="nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+                <a href="{{ url_for('a_propos') }}"
+                    class="nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+                <a href="{{ url_for('services') }}"
+                    class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a>
+                <a href="{{ url_for('contact') }}"
+                    class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+            </nav>
+        </div>
+        <div id="mobile-menu"
+            class="md:hidden hidden px-4 pb-4 space-y-2 text-sm font-medium">
+            <a href="{{ url_for('accueil') }}"
+                class="block nav-link {% if request.endpoint == 'accueil' %}active{% endif %}">Accueil</a>
+            <a href="{{ url_for('a_propos') }}"
+                class="block nav-link {% if request.endpoint == 'a_propos' %}active{% endif %}">À propos</a>
+            <a href="{{ url_for('services') }}"
+                class="block nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a>
+            <a href="{{ url_for('contact') }}"
+                class="block nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+        </div>
+    </header>
+
+
+    <!-- Titre -->
+    <section class="text-center mt-12">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 wow animate__animated animate__fadeInDown">
+            Contactez-nous
+        </h1>
+        <p class="text-gray-600 mt-3 wow animate__animated animate__fadeInUp"
+            data-wow-delay="0.2s">
+            Une question, une suggestion ou un partenariat ? On est là pour vous.
+        </p>
+    </section>
+
+    <!-- Formulaire de contact -->
+    <main class="flex-grow bg-gray-100 py-16 px-4 sm:px-6">
+        <section
+            class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8 space-y-6 wow animate__animated animate__fadeInUp"
+            data-wow-delay="0.3s">
+
+            <form id="contact-form"
+                action="#"
+                method="POST"
+                role="form"
+                class="space-y-6">
+                <div class="wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.4s">
+                    <label for="nom"
+                        class="block text-sm font-medium text-gray-700">Nom complet</label>
+                    <input type="text"
+                        id="nom"
+                        name="nom"
+                        required
+                        aria-required="true"
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+
+                <div class="wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.5s">
+                    <label for="email"
+                        class="block text-sm font-medium text-gray-700">Adresse email</label>
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        required
+                        aria-required="true"
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+
+                <div class="wow animate__animated animate__fadeInLeft"
+                    data-wow-delay="0.6s">
+                    <label for="message"
+                        class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="message"
+                        name="message"
+                        rows="5"
+                        required
+                        aria-required="true"
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 resize-none"></textarea>
+                </div>
+
+                <div class="text-center wow animate__animated animate__fadeInUp"
+                    data-wow-delay="0.7s">
+                    <button type="submit"
+                        class="bg-blue-600 text-white font-semibold px-6 py-3 rounded shadow hover:bg-blue-700 transition transform hover:-translate-y-1"
+                        aria-label="Envoyer le message">
+                        Envoyer le message
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-sm text-gray-500 text-center italic pt-4 wow animate__animated animate__fadeIn"
+                data-wow-delay="0.8s">
+                Nous répondons sous 24h ouvrées. Merci de votre confiance.
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white shadow-sm py-6 text-center text-sm text-gray-600">
+        <p>&copy; 2025 MonConvertisseur. Tous droits réservés.</p>
+        <p class="mt-1">Par Yowan Mberi</p>
+    </footer>
+
+    <!-- Formulaire interactif -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const nom = document.getElementById('nom').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (nom && email && message) {
+                    alert("Merci, votre message a bien été envoyé !");
+                    form.reset();
+                } else {
+                    alert("Veuillez remplir tous les champs avant d’envoyer.");
+                }
+            });
+        });
+    </script>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
