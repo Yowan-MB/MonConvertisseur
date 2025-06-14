@@ -1,0 +1,30 @@
+# Environnements virtuels
+venv/
+ENV/
+env/
+.venv/
+
+# Fichiers Python compilés
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers temporaires / système
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jetons secrets ou configs perso
+*.env
+.env.*
+
+# Caches IDE
+.vscode/
+.idea/
+
+# Fichiers macOS et Linux
+*.swp
+*.swo
