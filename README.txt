@@ -66,10 +66,21 @@ python app.py
 
 monconvertisseur/
 ├── app.py
+├── requirements.txt
+├── .gitignore
 ├── static/
 │   ├── style.css
 │   ├── script.js
 │   └── img/
+│       ├── logo.png
+│       ├── favicon.svg
+│       ├── favicon.ico
+│       ├── favicon-96x96.png
+│       ├── apple-touch-icon.png
+│       ├── site.webmanifest
+│       ├── convert.png
+│       ├── frais.jpg
+│       └── compare.jpg
 ├── templates/
 │   ├── index.html
 │   ├── a-propos.html
@@ -77,7 +88,7 @@ monconvertisseur/
 │   ├── contact.html
 │   └── en-construction.html
 ├── README.md
-└── favicon / manifest / icônes
+
 
 📌 Roadmap
 💸 Calculateur de frais (transfert, commissions bancaires…)
